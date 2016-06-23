@@ -10,6 +10,6 @@ weight = 0
 
 I'm a **full-stack** software developer. I started building web applications with **Ruby on Rails** in 2009. I enjoy working on **web apps**, **mobile apps**, **dev-ops**, and **embedded software** for **Raspberry Pi** and **Arduino**. I also have experience **working remotely** on distributed teams.
 
-I have qualified for an [O-1 visa](https://www.uscis.gov/working-united-states/temporary-workers/o-1-visa-individuals-extraordinary-ability-or-achievement), and I have passed the [Toptal screening process](https://www.toptal.com/top-3-percent).
+I have qualified for an <a href="https://www.uscis.gov/working-united-states/temporary-workers/o-1-visa-individuals-extraordinary-ability-or-achievement" target="_blank">O-1 visa</a>, and passed the <a href="https://www.toptal.com/top-3-percent" target="_blank">Toptal screening process</a>.
 
 I may be available to work on your project. Please [contact me](#contact) for rates and availability.
