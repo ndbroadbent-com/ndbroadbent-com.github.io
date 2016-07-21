@@ -14,5 +14,5 @@ I have qualified for an <a href="https://www.uscis.gov/working-united-states/tem
 
 I have some experience with design, video editing, and music recording and production. Some of my other interests include improv, acting, visual effects, 3D animation, juggling, skateboarding, and skiing.
 
-I'm looking for interesting projects to work on. Let me know if you have an idea for a website, mobile game, short film, or if you want to start a live electro-swing band.
+I'm looking for interesting projects to work on. Let me know if you have an idea for a website, mobile game, or short film. Or if you want to start a live electro-swing band.
 <br/>[Contact me](#contact) for availability and rates.
