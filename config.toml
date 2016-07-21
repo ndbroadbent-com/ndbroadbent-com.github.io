@@ -38,7 +38,7 @@ googleAnalytics = ""
     interests = ["Ruby on Rails", "Swift", "React", "Ember.js",
                  "Backbone.js", "Node.js", "Python", "Elixir", "Phoenix",
                  "Heroku", "AWS", "Ansible", "Terraform"]
-    str_interests = "Technologies"
+    str_interests = "Skills"
     str_experience = "Experience"
 
     [[params.about.experience]]
