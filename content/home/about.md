@@ -12,6 +12,4 @@ I'm a **full-stack** software developer. I started building web applications wit
 
 I have qualified for an <a href="https://www.uscis.gov/working-united-states/temporary-workers/o-1-visa-individuals-extraordinary-ability-or-achievement" target="_blank">O-1 visa</a>, and I passed the <a href="https://www.toptal.com/top-3-percent" target="_blank">Toptal screening process</a>.
 
-I have some experience with design, video editing, and music recording and production. Some of my other interests include improv, acting, visual effects, 3D animation, juggling, skateboarding, and skiing.
-
 I'm looking for interesting projects to work on. Let me know if you have an idea for a website, mobile game, or short film. [Contact me](#contact) for availability and rates.
