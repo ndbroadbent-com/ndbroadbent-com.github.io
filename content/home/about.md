@@ -12,4 +12,4 @@ I'm a **full-stack** software developer. I started building web applications wit
 
 I have qualified for an <a href="https://www.uscis.gov/working-united-states/temporary-workers/o-1-visa-individuals-extraordinary-ability-or-achievement" target="_blank">O-1 visa</a>, and I passed the <a href="https://www.toptal.com/top-3-percent" target="_blank">Toptal screening process</a>.
 
-I'm looking for interesting projects to work on. Let me know if you have an idea for a website, mobile game, or short film. [Contact me](#contact) for availability and rates.
+I'm looking for interesting projects to work on. [Contact me](#contact) for availability and rates.
