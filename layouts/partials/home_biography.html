@@ -54,7 +54,11 @@
                     <li>
                         <div class="description">
                             <p class="company">
+                                {{ if .company_url }}
                                 <a href="{{ .company_url }}" target="_blank">{{ .company }}</a>,
+                                {{ else }}
+                                {{ .company }},
+                                {{ end }}
                                 {{ .year }}
                             </p>
                             <p class="position">{{ .position }}</p>

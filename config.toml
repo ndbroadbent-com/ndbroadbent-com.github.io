@@ -42,6 +42,10 @@ googleAnalytics = ""
     str_experience = "Experience"
 
     [[params.about.experience]]
+      company = "Consultant"
+      year = "2014-present"
+
+    [[params.about.experience]]
       company = "HDWR"
       company_url = "https://hdwr.co"
       position = "CTO"
