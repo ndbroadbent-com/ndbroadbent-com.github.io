@@ -139,7 +139,7 @@
                         {{ if .Content }}</a >{{ else }}{{ with .Params.external_link }}</a>{{ end }}{{ end }}
                         </span>
 
-                        {{ with .Params.summary }}<p class="portfolio-summary">{{ . }}</p>{{ end }}
+                        {{ with .Params.summary }}<p class="portfolio-summary">{{ . | safeHTML }}</p>{{ end }}
 
                         {{ if isset .Params "tags" }}
                         {{ $tagsLen := len .Params.tags }}
