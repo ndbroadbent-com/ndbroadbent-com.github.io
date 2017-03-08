@@ -6,7 +6,7 @@ section_id = 0
 weight = 0
 +++
 
-Hello! I'm a **full-stack** software developer. I started building web applications with **Ruby on Rails** in 2009. I enjoy working on **web apps**, **mobile apps**, **devops**, and **embedded software** for **Raspberry Pi** and **Arduino**. I enjoy **working remotely** on distributed teams.
+Hello! I'm a **full-stack** software developer. I've been building <a href="https://hdwr.co" target="_blank">iOS apps</a> with Swift since 2015, <a href="https://gusto.com" target="_blank">web apps</a> with Ruby on Rails since 2009, and **QBASIC** games since 1995. I also enjoy working on **devops**, and **embedded software** for the **Raspberry Pi** and **Arduino**. I prefer **working remotely** on distributed teams.
 
 I have qualified for an <a href="https://www.uscis.gov/working-united-states/temporary-workers/o-1-visa-individuals-extraordinary-ability-or-achievement" target="_blank">O-1 visa</a>, and I have passed the <a href="https://www.toptal.com/top-3-percent" target="_blank">Toptal screening process</a>.
 
