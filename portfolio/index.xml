@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Portfolios on Nathan Broadbent</title>
-    <link>http://ndbroadbent.com/portfolio/</link>
+    <link>http://ndbroadbent.com/portfolio/index.xml</link>
     <description>Recent content in Portfolios on Nathan Broadbent</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
