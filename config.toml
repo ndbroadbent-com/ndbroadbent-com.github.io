@@ -98,24 +98,34 @@ googleAnalytics = ""
   #   Full list: https://jpswalsh.github.io/academicons/
 
   [[params.social]]
+    title = "Email"
     icon = "envelope"
     icon_pack = "fa"
     link = "mailto:hello@ndbroadbent.com"
 
   [[params.social]]
+    title = "GitHub"
     icon = "github"
     icon_pack = "fa"
     link = "//github.com/ndbroadbent"
 
   [[params.social]]
+    title = "Twitter"
     icon = "twitter"
     icon_pack = "fa"
     link = "//twitter.com/ndbroadbent"
 
   [[params.social]]
+    title = "LinkedIn"
     icon = "linkedin"
     icon_pack = "fa"
     link = "https://www.linkedin.com/in/ndbroadbent"
+
+  [[params.social]]
+    title = "Toptal"
+    class = "toptal"
+    svgPath = "toptal_logo.svg"
+    link = "https://www.toptal.com/resume/nathan-broadbent"
 
 
 # Navigation Links

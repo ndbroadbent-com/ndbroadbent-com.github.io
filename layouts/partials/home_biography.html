@@ -13,11 +13,15 @@
             <ul class="social-icon">
                 {{ range .Site.Params.social }}
                 <li>
-                    <a href="{{ .link }}" target="_blank">
+                    <a href="{{ .link }}" target="_blank" title="{{ .title }}">
                     {{ if eq .icon_pack "ai" }}
                         <i class="ai ai-{{ .icon }} big-icon" aria-hidden="true"></i>
                     {{ else }}
-                        <i class="fa fa-{{ .icon }} big-icon" aria-hidden="true"></i>
+                        {{ if eq .icon_pack "fa" }}
+                            <i class="fa fa-{{ .icon }} big-icon" aria-hidden="true"></i>
+                        {{ else }}
+                            {{ partial .svgPath | safeHTML }}
+                        {{ end }}
                     {{ end }}
                     </a>
                 </li>
