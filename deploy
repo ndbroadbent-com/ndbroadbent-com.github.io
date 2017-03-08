@@ -1,4 +1,6 @@
 #!/bin/bash
+echo "Pushing source..."
+git push
 hugo
 cd public
 git add -A
