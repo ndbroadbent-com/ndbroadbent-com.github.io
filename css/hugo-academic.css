@@ -221,9 +221,20 @@ pre {
     margin-right: 0;
 }
 
-#profile .social-icon li:hover {
-    transform: scale(1.2)
+#profile .social-icon li, #profile .social-icon svg path {
+    color: #00c565;
+    fill: #00c565;
 }
+
+#profile .social-icon li:hover {
+    transform: scale(1.2);
+}
+
+#profile .social-icon li:hover, #profile .social-icon svg:hover path {
+    color: #008141;
+    fill: #008141;
+}
+
 
 .big-icon {
     font-size: 40px;
