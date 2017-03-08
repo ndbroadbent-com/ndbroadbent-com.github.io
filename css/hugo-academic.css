@@ -235,6 +235,9 @@ pre {
     fill: #008141;
 }
 
+#profile .social-icon svg path {
+    transition: fill 0.6s ease;
+}
 
 .big-icon {
     font-size: 40px;
