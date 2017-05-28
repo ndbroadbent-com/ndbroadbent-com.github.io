@@ -16,7 +16,6 @@ googleAnalytics = ""
   role = "Software Developer"
   email = "hello@ndbroadbent.com"
   address = "Chiang Mai, Thailand"
-  phone = "+66 99 004 8303"
 
   # Date format (refer to Go's date format: http://flippinggodateformat.com )
   #   Examples: "Mon, Jan 2, 2006" or "2006-01-02"
