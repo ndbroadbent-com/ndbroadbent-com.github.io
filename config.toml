@@ -34,11 +34,16 @@ googleAnalytics = ""
   # Biography section.
   # Section will only be displayed if `content/home/about.md` exists.
   [params.about]
-    interests = ["Ruby on Rails", "Node.js", "Elixir",
-                 "Ember.js", "React", "Backbone.js",
-                 "React Native", "Swift", "Objective-C", "Java", "C#",
-                 "Go", "Python",
-                 "AWS", "Heroku", "Kubernetes", "Docker", "Ansible", "Terraform"]
+    interests = [
+      "Ruby on Rails",
+      "Node.js",
+      "Ember",
+      "React",
+      "React Native",
+      "Swift",
+      "Go",
+      "AWS"
+    ]
     str_interests = "My skills include:"
     str_experience = "Work Experience:"
 
