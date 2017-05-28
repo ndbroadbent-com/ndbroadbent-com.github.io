@@ -6,7 +6,7 @@ section_id = 0
 weight = 0
 +++
 
-Hello! I'm a full-stack software developer. I enjoy building web apps with tools such as Rails, Node.js, Elixir, React, and Ember. I also enjoy building cross-platform mobile apps with React Native (including native code in Swift, Objective C, Java, and C#).
+Hello! I'm a full-stack software developer. I build web apps with tools such as Rails, Node.js, Elixir, React, and Ember. I also build cross-platform mobile apps with React Native (including native code in Swift, Objective C, Java, and C#).
 
 I also enjoy working on dev-ops (e.g. AWS, [Hashicorp tools](https://www.hashicorp.com/), Kubernetes), and embedded software for the Raspberry Pi and Arduino. I prefer to work remotely on distributed teams.
 
