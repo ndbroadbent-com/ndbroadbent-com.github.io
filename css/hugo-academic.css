@@ -74,7 +74,7 @@ h4 {
 
 a, a:visited,
 h3.article-title a:hover {
-    color: #888;
+    color: #777;
     text-decoration: none;
     transition: color 0.6s ease;
 }
@@ -84,15 +84,15 @@ h3.article-title a:hover {
 }
 
 a:hover {
-    color: #444;
+    color: #aaa;
 }
 
 .social-icon a, .social-icon a:visited {
-    color: #333;
+    color: #ccc;
 }
 
 .social-icon a:hover {
-    color: #777;
+    color: #999;
 }
 
 
@@ -235,8 +235,8 @@ pre {
 }
 
 #profile .social-icon li, #profile .social-icon svg path {
-    color: #333;
-    fill: #333;
+    color: #ccc;
+    fill: #ccc;
 }
 
 #profile .social-icon li:hover {
@@ -244,8 +244,8 @@ pre {
 }
 
 #profile .social-icon li:hover, #profile .social-icon svg:hover path {
-    color: #777;
-    fill: #777;
+    color: #999;
+    fill: #999;
 }
 
 #profile .social-icon svg path {
@@ -349,7 +349,7 @@ h3.article-title a {
 }
 
 .article-metadata a:hover {
-    color: #00c565;
+    color: #555;
 }
 
 .article-metadata a {
@@ -537,7 +537,7 @@ footer a#back_to_top i {
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
-    background: #00c565;
+    background: #555;
 }
 
 /*************************************************
@@ -606,7 +606,7 @@ nav#navbar-main li {
 }
 
 .navbar-default .navbar-nav li a:hover {
-    color: #00c565;
+    color: #333;
 }
 
 .navbar-brand,
