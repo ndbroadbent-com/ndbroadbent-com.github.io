@@ -1,51 +1,62 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://ndbroadbent.com/portfolio/bbswoops/</loc>
+    <loc>//ndbroadbent.com/portfolio/bbswoops/</loc>
     <lastmod>2016-07-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ndbroadbent.com/home/about/</loc>
+    <loc>//ndbroadbent.com/home/about/</loc>
     <lastmod>2016-04-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ndbroadbent.com/portfolio/hdwr/</loc>
+    <loc>//ndbroadbent.com/portfolio/hdwr/</loc>
     <lastmod>2014-10-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ndbroadbent.com/portfolio/gusto/</loc>
+    <loc>//ndbroadbent.com/portfolio/gusto/</loc>
     <lastmod>2013-08-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ndbroadbent.com/portfolio/foliohd/</loc>
+    <loc>//ndbroadbent.com/portfolio/foliohd/</loc>
     <lastmod>2013-07-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ndbroadbent.com/portfolio/raspberry-pi-microwave/</loc>
+    <loc>//ndbroadbent.com/portfolio/raspberry-pi-microwave/</loc>
     <lastmod>2013-07-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ndbroadbent.com/home/</loc>
+    <loc>//ndbroadbent.com/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//ndbroadbent.com/home/</loc>
     <lastmod>2016-04-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ndbroadbent.com/</loc>
+    <loc>//ndbroadbent.com/</loc>
     <lastmod>2016-07-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ndbroadbent.com/portfolio/</loc>
+    <loc>//ndbroadbent.com/portfolio/</loc>
     <lastmod>2016-07-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//ndbroadbent.com/tags/</loc>
     <priority>0</priority>
   </url>
   

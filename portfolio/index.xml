@@ -2,56 +2,58 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Portfolios on Nathan Broadbent</title>
-    <link>http://ndbroadbent.com/portfolio/index.xml</link>
+    <link>//ndbroadbent.com/portfolio/</link>
     <description>Recent content in Portfolios on Nathan Broadbent</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2016 Nathan Broadbent</copyright>
     <lastBuildDate>Wed, 20 Jul 2016 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://ndbroadbent.com/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="//ndbroadbent.com/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Boops Boops Swoops</title>
-      <link>http://ndbroadbent.com/portfolio/bbswoops/</link>
+      <link>//ndbroadbent.com/portfolio/bbswoops/</link>
       <pubDate>Wed, 20 Jul 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://ndbroadbent.com/portfolio/bbswoops/</guid>
+      <guid>//ndbroadbent.com/portfolio/bbswoops/</guid>
       <description></description>
     </item>
     
     <item>
       <title>HDWR</title>
-      <link>http://ndbroadbent.com/portfolio/hdwr/</link>
+      <link>//ndbroadbent.com/portfolio/hdwr/</link>
       <pubDate>Fri, 10 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ndbroadbent.com/portfolio/hdwr/</guid>
+      <guid>//ndbroadbent.com/portfolio/hdwr/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Gusto</title>
-      <link>http://ndbroadbent.com/portfolio/gusto/</link>
+      <link>//ndbroadbent.com/portfolio/gusto/</link>
       <pubDate>Sat, 10 Aug 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://ndbroadbent.com/portfolio/gusto/</guid>
+      <guid>//ndbroadbent.com/portfolio/gusto/</guid>
       <description></description>
     </item>
     
     <item>
       <title>FolioHD</title>
-      <link>http://ndbroadbent.com/portfolio/foliohd/</link>
+      <link>//ndbroadbent.com/portfolio/foliohd/</link>
       <pubDate>Wed, 10 Jul 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://ndbroadbent.com/portfolio/foliohd/</guid>
+      <guid>//ndbroadbent.com/portfolio/foliohd/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Raspberry Pi Microwave</title>
-      <link>http://ndbroadbent.com/portfolio/raspberry-pi-microwave/</link>
+      <link>//ndbroadbent.com/portfolio/raspberry-pi-microwave/</link>
       <pubDate>Wed, 10 Jul 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://ndbroadbent.com/portfolio/raspberry-pi-microwave/</guid>
+      <guid>//ndbroadbent.com/portfolio/raspberry-pi-microwave/</guid>
       <description></description>
     </item>
     
