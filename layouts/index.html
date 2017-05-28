@@ -122,10 +122,10 @@
                     <li>
                         <span class="portfolio-title">
                         {{ if .Content }}
-                            <a href="{{ .Permalink }}" target="_blank">
+                            <a href="{{ .Permalink }}" target="_blank" rel="noopener noreferrer">
                         {{ else }}
                             {{ with .Params.external_link }}
-                                <a href="{{ . }}" target="_blank">
+                                <a href="{{ . }}" target="_blank" rel="noopener noreferrer">
                             {{ end }}
                         {{ end }}
 

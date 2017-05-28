@@ -56,13 +56,13 @@ googleAnalytics = ""
     [[params.about.experience]]
       company = "Gusto"
       company_url = "https://gusto.com"
-      position = "Full-stack software engineer"
+      position = "Software engineer"
       year = "2012-2014"
 
     [[params.about.experience]]
       company = "Crossroads Foundation"
       company_url = "https://http://crossroads.org.hk/"
-      position = "Full-stack software engineer"
+      position = "Software engineer"
       year = "2009-2011"
 
   # Posts section.

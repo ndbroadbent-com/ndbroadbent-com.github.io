@@ -13,7 +13,7 @@
             <ul class="social-icon">
                 {{ range .Site.Params.social }}
                 <li>
-                    <a href="{{ .link }}" target="_blank" title="{{ .title }}">
+                    <a href="{{ .link }}" target="_blank" rel="noopener noreferrer" title="{{ .title }}">
                     {{ if eq .icon_pack "ai" }}
                         <i class="ai ai-{{ .icon }} big-icon" aria-hidden="true"></i>
                     {{ else }}
@@ -59,7 +59,7 @@
                         <div class="description">
                             <p class="company">
                                 {{ if .company_url }}
-                                <a href="{{ .company_url }}" target="_blank">{{ .company }}</a>,
+                                <a href="{{ .company_url }}" target="_blank" rel="noopener noreferrer">{{ .company }}</a>,
                                 {{ else }}
                                 {{ .company }},
                                 {{ end }}
