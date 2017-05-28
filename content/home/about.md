@@ -6,8 +6,10 @@ section_id = 0
 weight = 0
 +++
 
-Hello! I'm a **full-stack** software developer. I've been building <a href="https://hdwr.co" target="_blank">iOS apps</a> with Swift since 2015, <a href="https://gusto.com" target="_blank">web apps</a> with Ruby on Rails since 2009, and **QBASIC** games since 1995. I also enjoy working on **devops**, and **embedded software** for the **Raspberry Pi** and **Arduino**. I prefer **working remotely** on distributed teams.
+Hello! I'm a **full-stack** software developer. I build <a href="https://gusto.com" target="_blank">web apps</a> with Ruby on Rails, <a href="https://hdwr.co" target="_blank">native iOS apps</a> with Swift and Objective C, and cross-platform apps with React Native (including native code for any platform). I enjoy writing apps that can run everywhere (web, iOS, Android, Windows phone & desktop, and Mac).
+
+I also enjoy working on **devops** (e.g. AWS, [Hashicorp tools](https://www.hashicorp.com/), Kubernetes), and **embedded software** for the **Raspberry Pi** and **Arduino**. I prefer to **work remotely** on distributed teams.
 
 I have qualified for an <a href="https://www.uscis.gov/working-united-states/temporary-workers/o-1-visa-individuals-extraordinary-ability-or-achievement" target="_blank">O-1 visa</a>, and I have passed the <a href="https://www.toptal.com/top-3-percent" target="_blank">Toptal screening process</a>.
 
-I may be available to work on your project. Please [contact me](#contact) for availability and rates.
+I might be available to work on your project. Please [contact me](#contact) for availability and rates.
