@@ -149,7 +149,7 @@ googleAnalytics = ""
 
 [[menu.main]]
   name = "Blog"
-  url = "http://madebynathan.com"
+  url = "https://madebynathan.com"
   weight = 3
 
 # [[menu.main]]

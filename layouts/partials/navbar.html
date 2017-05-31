@@ -21,7 +21,7 @@
                 {{ range .Site.Menus.main }}
                 <li class="nav-item">
                 {{ if in .URL "http" }}
-                    <a href="{{ .URL }}" target="_blank" rel="noopener noreferrer">{{ .Name }}</a>
+                    <a href="{{ .URL }}">{{ .Name }}</a>
                 {{ else }}
                     <a href="{{ $baseUrl }}{{ .URL }}">{{ .Name }}</a>
                 {{ end }}
