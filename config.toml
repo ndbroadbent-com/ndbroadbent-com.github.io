@@ -41,16 +41,18 @@ googleAnalytics = ""
       "React Native",
       "Swift",
       "Go",
+      "Python",
       "AWS",
       "Linux",
+      "Docker",
     ]
-    str_interests = "My skills include:"
+    str_interests = "My Skills Include:"
     str_experience = "Work Experience:"
 
     [[params.about.experience]]
       company = "FormAPI"
       company_url = "https://formapi.io"
-      position = "Founder, Developer, Designer"
+      position = "Founder, Developer"
       year = "2017-present"
 
     [[params.about.experience]]

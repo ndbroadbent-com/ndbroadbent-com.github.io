@@ -7,8 +7,7 @@ weight = 0
 +++
 
 Hello! I'm a software developer. I enjoy building web apps with Rails, Node.js, React, and Ember. I also build mobile apps with React Native, including native code in Swift, Objective C, Java, and C#.
-
-I enjoy working on DevOps, and am familiar with AWS, Terraform, Kubernetes, Chef, and Ansible. I also enjoy working on embedded software for Raspberry Pi and Arduino.
+I enjoy working with DevOps, and have experience with AWS, Terraform, Chef, Ansible, Docker, and Kubernetes.
 
 I qualified for an <a href="https://www.uscis.gov/working-united-states/temporary-workers/o-1-visa-individuals-extraordinary-ability-or-achievement" target="_blank" rel="noopener noreferrer">O-1 visa</a>, and passed the <a href="https://www.toptal.com/top-3-percent" target="_blank" rel="noopener noreferrer">Toptal screening process</a>.
 
