@@ -6,7 +6,7 @@ section_id = 0
 weight = 0
 +++
 
-Hello! I'm a software developer. I enjoy building web apps with Rails, Node.js, React, and Ember. I also build iOS apps, and cross-platform apps with React Native (including native code in Swift, Objective C, Java, and C#.)
+Hello! I'm a software developer. I enjoy building web apps with Rails, Node.js, React, and Ember. I also build mobile apps with React Native, including native code in Swift, Objective C, Java, and C#.
 
 I enjoy working on DevOps, and am familiar with AWS, Terraform, Kubernetes, Chef, and Ansible. I also enjoy working on embedded software for Raspberry Pi and Arduino.
 
