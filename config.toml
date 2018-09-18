@@ -43,8 +43,8 @@ googleAnalytics = ""
       "Go",
       "Python",
       "AWS",
-      "Linux",
       "Docker",
+      "Convox",
     ]
     str_interests = "My Skills Include:"
     str_experience = "Work Experience:"
@@ -64,18 +64,18 @@ googleAnalytics = ""
       company = "HDWR"
       company_url = "https://hdwr.co"
       position = "Cofounder, Developer"
-      year = "2014-present"
+      year = "2014-2017"
 
     [[params.about.experience]]
       company = "Gusto"
       company_url = "https://gusto.com"
-      position = "Full-stack Software Engineer"
+      position = "Full-Stack Software Engineer"
       year = "2012-2014"
 
     [[params.about.experience]]
       company = "Crossroads Foundation"
       company_url = "https://crossroads.org.hk/"
-      position = "Full-stack Software Engineer"
+      position = "Full-Stack Software Engineer"
       year = "2009-2011"
 
   # Posts section.
