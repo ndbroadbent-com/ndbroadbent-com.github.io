@@ -15,7 +15,7 @@ googleAnalytics = ""
   name = "Nathan Broadbent"
   role = "Software Developer"
   email = "hello@ndbroadbent.com"
-  address = "Chiang Mai, Thailand"
+  address = "Kuala Lumpur, Malaysia"
 
   # Date format (refer to Go's date format: http://flippinggodateformat.com )
   #   Examples: "Mon, Jan 2, 2006" or "2006-01-02"
@@ -50,8 +50,8 @@ googleAnalytics = ""
     str_experience = "Work Experience:"
 
     [[params.about.experience]]
-      company = "FormAPI"
-      company_url = "https://formapi.io"
+      company = "DocSpring"
+      company_url = "https://docspring.com"
       position = "Founder, Developer"
       year = "2017-present"
 
