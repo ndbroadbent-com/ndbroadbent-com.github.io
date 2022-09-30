@@ -1,16 +1,21 @@
 #!/bin/bash
-echo "Pushing source..."
-git push
+set -euo pipefail
 
 if [ ! -d public/.git ]; then
   rm -rf public
   REMOTE="$(git remote get-url origin)"
   git clone "${REMOTE}" public
+  (cd public && git checkout master)
 fi
 
-hugo
+docker run --rm -v "${PWD}:/src" hugo-alpine hugo
+
 cd public
 git add -A
 git commit -m "$(date)"
 echo "Pushing build..."
+git push
+
+cd ..
+echo "Pushing source..."
 git push
