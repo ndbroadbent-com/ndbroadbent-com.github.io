@@ -37,6 +37,7 @@ googleAnalytics = ""
     interests = [
       "Ruby on Rails",
       "Node.js",
+      "Typescript",
       "React",
       "React Native",
       "Swift",
@@ -44,6 +45,7 @@ googleAnalytics = ""
       "Python",
       "AWS",
       "Docker",
+      "Kubernetes",
       "Convox",
     ]
     str_interests = "My Skills Include:"
