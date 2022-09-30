@@ -36,7 +36,8 @@
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>//ndbroadbent.com/home/about/</guid>
-      <description>Hello! I&amp;rsquo;m a software developer. I enjoy building web and mobile applications, mainly with Ruby on Rails, React, and React Native. I also have experience with DevOps, including AWS, Heroku, Terraform, Chef, OpsWorks, Ansible, Capistrano, Convox, Docker, and Kubernetes. I received an O-1 visa to work in the US, and I passed the Toptal screening process.</description>
+      <description>Hi, my name is Nathan Broadbent and I&#39;m a software developer from Auckland, New Zealand. I&#39;ve been writing web, mobile, and desktop applications professionally since 2009. document.write(&#34;for &#34; + (new Date().getFullYear() - 2009) + &#34; years.&#34;); I especially enjoy working with startups and building my own products.
+I&#39;ve worked with many different tools and technologies, including Ruby on Rails, Go, Java, Python, React, Ember.js, TypeScript, Node.js, Next.js, C, C++, Objective-C, Swift, React Native, and many others.</description>
     </item>
     
     <item>
@@ -45,15 +46,6 @@
       <pubDate>Fri, 10 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>//ndbroadbent.com/portfolio/hdwr/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Gusto</title>
-      <link>//ndbroadbent.com/portfolio/gusto/</link>
-      <pubDate>Sat, 10 Aug 2013 00:00:00 +0000</pubDate>
-      
-      <guid>//ndbroadbent.com/portfolio/gusto/</guid>
       <description></description>
     </item>
     
