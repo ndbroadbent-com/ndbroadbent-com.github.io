@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Portfolio from '../components/Portfolio.astro';
+import Contact from '../components/Contact.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+
+const portfolioItems = [
+  {
+    title: "DocSpring",
+    summary: "I built a service that makes it easy for programmers to fill out PDF forms.",
+    image: "/img/portfolio/docspring.jpeg",
+    link: "https://docspring.com",
+    date: "2017-10-10"
+  },
+  {
+    title: "SudoBlock",
+    summary: "I built a game using React Native (one codebase for iPhone, Android, Windows, and web)",
+    image: "/img/portfolio/sudoblock.jpeg",
+    link: "https://sudoblock.com",
+    date: "2016-07-20"
+  },
+  {
+    title: "HDWR",
+    summary: "I built an iOS app for skateboarders.",
+    image: "/img/portfolio/hdwr.jpeg",
+    link: "https://hdwr.co",
+    date: "2014-10-10"
+  },
+  {
+    title: "Raspberry Pi Microwave",
+    summary: "I used a Raspberry Pi to add some new features to my microwave.",
+    image: "/img/portfolio/raspberrypimicrowave.jpg",
+    link: "http://madebynathan.com/2013/07/10/raspberry-pi-powered-microwave/",
+    date: "2013-07-10"
+  }
+];
+---
+
+<Layout title="Nathan Broadbent">
+  <Header />
+  <Hero />
+  <Portfolio items={portfolioItems} />
+  <Contact />
+  <ThemeToggle />
+</Layout>

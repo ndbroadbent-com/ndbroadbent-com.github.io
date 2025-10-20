@@ -1,0 +1,341 @@
+---
+const skills = [
+  "QBASIC",
+  "Visual Basic",
+  "Delphi",
+  "Ruby on Rails",
+  "Node.js",
+  "Typescript",
+  "React",
+  "React Native",
+  "Swift",
+  "Go",
+  "Rust",
+  "Python",
+  "SQL",
+  "Bash",
+  "AWS",
+  "Terraform",
+  "Docker",
+  "Kubernetes",
+  "Convox"
+];
+
+const experience = [
+  {
+    company: "DocSpring",
+    companyUrl: "https://docspring.com",
+    position: "Founder, Developer",
+    year: "2017-present"
+  },
+  {
+    company: "Consultant",
+    position: "Web, Mobile, DevOps",
+    year: "2012-2019"
+  },
+  {
+    company: "HDWR",
+    position: "Cofounder, Developer",
+    year: "2014-2017"
+  },
+  {
+    company: "Gusto",
+    companyUrl: "https://gusto.com",
+    position: "Full-Stack Software Engineer",
+    year: "2012-2014"
+  },
+  {
+    company: "Crossroads Foundation",
+    companyUrl: "https://crossroads.org.hk/",
+    position: "Full-Stack Software Engineer",
+    year: "2009-2011"
+  }
+];
+
+const yearsSince2009 = new Date().getFullYear() - 2009;
+---
+
+<section id="bio" class="hero-section">
+  <div class="container">
+    <div class="hero-grid">
+      <!-- Left Column -->
+      <div class="hero-main">
+        <div class="hero-banner">
+          <marquee behavior="scroll" direction="left">✨ WELCOME TO MY HOMEPAGE ✨</marquee>
+        </div>
+
+        <h1 class="hero-title">
+          ⭐ Nathan Broadbent ⭐
+        </h1>
+
+        <p class="hero-subtitle">
+          🌐 Software Developer 🌐 Paihia, New Zealand 🌏
+        </p>
+
+        <p class="hero-intro">
+          I've been building <blink>AWESOME</blink> web, mobile, and desktop applications for <span class="highlight">{yearsSince2009} years</span>!
+          I enjoy working with startups and creating my own products. 🚀
+        </p>
+
+        <!-- Skills -->
+        <div class="skills-section">
+          <h3 class="skills-title">💻 Skills 💻</h3>
+          <div class="skills-grid">
+            {skills.map(skill => (
+              <span class="skill-tag">{skill}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="hero-sidebar">
+        <!-- Experience -->
+        <div class="info-card">
+          <h3 class="card-title">Experience</h3>
+          <div class="experience-list">
+            {experience.map(exp => (
+              <div class="exp-item">
+                {exp.companyUrl ? (
+                  <a href={exp.companyUrl} target="_blank" rel="noopener" class="exp-company">{exp.company}</a>
+                ) : (
+                  <div class="exp-company">{exp.company}</div>
+                )}
+                <div class="exp-role">{exp.position}</div>
+                <div class="exp-year">{exp.year}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    padding: 2rem 0;
+    min-height: auto;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  /* Left Column */
+  .hero-main {
+    padding-top: 1rem;
+  }
+
+  .hero-banner {
+    background: linear-gradient(45deg, var(--jazz-teal), var(--jazz-purple), var(--jazz-pink), var(--jazz-yellow));
+    border: 3px outset var(--border-color);
+    padding: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
+  }
+
+  marquee {
+    color: var(--text-color);
+    text-shadow: 2px 2px 0px var(--text-shadow);
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    animation: rainbow-text 3s linear infinite;
+    text-shadow: 3px 3px 0px var(--text-shadow),
+                 6px 6px 0px rgba(0, 0, 0, 0.5);
+  }
+
+  @keyframes rainbow-text {
+    0% { color: #FF0000; }
+    16% { color: #FF7F00; }
+    33% { color: #FFFF00; }
+    50% { color: #00FF00; }
+    66% { color: #0000FF; }
+    83% { color: #8B00FF; }
+    100% { color: #FF0000; }
+  }
+
+  .hero-subtitle {
+    font-size: 1.3rem;
+    color: var(--cyber-blue);
+    margin-bottom: 2rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 0px var(--text-shadow);
+  }
+
+  .hero-intro {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    border: 2px dashed var(--neon-green);
+  }
+
+  blink {
+    animation: blink-animation 1s steps(2, start) infinite;
+  }
+
+  @keyframes blink-animation {
+    to { visibility: hidden; }
+  }
+
+  .highlight {
+    color: var(--neon-pink);
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-style: wavy;
+  }
+
+  .skills-section {
+    margin-top: 2rem;
+  }
+
+  .skills-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #6641b0;
+    background: #00FF00;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+    border: 3px outset #000;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Right Column */
+  .hero-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .info-card {
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(255, 0, 255, 0.3),
+      rgba(255, 0, 255, 0.3) 10px,
+      rgba(0, 255, 255, 0.3) 10px,
+      rgba(0, 255, 255, 0.3) 20px
+    ),
+    rgba(0, 0, 0, 0.5);
+    border: 5px groove var(--border-color);
+    padding: 1.5rem;
+    box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.5);
+  }
+
+  .info-card:hover {
+    transform: scale(1.02);
+    box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.5);
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #6641b0;
+    background: #00FF00;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    border: 3px outset #000;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+  }
+
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .skill-tag {
+    padding: 0.5rem 1rem;
+    background: var(--neon-green);
+    border: 3px outset var(--text-color);
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #000;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+    transition: all 0.1s ease;
+  }
+
+  .skill-tag:hover {
+    background: var(--jazz-yellow);
+    border-style: inset;
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+  }
+
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .exp-item {
+    padding: 0.75rem;
+    background: rgba(0, 0, 0, 0.6);
+    border: 3px solid var(--cyber-blue);
+  }
+
+  .exp-item:hover {
+    background: rgba(255, 255, 0, 0.2);
+    border-color: var(--neon-pink);
+  }
+
+  .exp-company {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--neon-pink);
+    text-decoration: underline;
+  }
+
+  .exp-company:hover {
+    color: var(--cyber-blue);
+    background: var(--text-shadow);
+  }
+
+  .exp-role {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    margin-top: 0.25rem;
+  }
+
+  .exp-year {
+    font-size: 0.8rem;
+    color: var(--neon-green);
+    margin-top: 0.25rem;
+    font-weight: bold;
+  }
+
+  @media (max-width: 768px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+    }
+
+    .hero-section {
+      min-height: auto;
+      padding: 2rem 0;
+    }
+  }
+</style>

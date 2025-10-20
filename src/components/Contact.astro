@@ -1,0 +1,214 @@
+---
+const contactInfo = [
+  {
+    icon: "email",
+    label: "Email",
+    value: "hello@ndbroadbent.com",
+    link: "mailto:hello@ndbroadbent.com"
+  },
+  {
+    icon: "location",
+    label: "Location",
+    value: "Paihia, New Zealand"
+  }
+];
+---
+
+<section id="contact" class="section contact-section">
+  <div class="container">
+    <div class="section-heading">
+      <h2>💌 Get In Touch! 💌</h2>
+      <div class="under-construction">
+        <marquee behavior="alternate"><span>🚧 THIS SITE IS UNDER CONSTRUCTION 🚧</span></marquee>
+      </div>
+    </div>
+    <div class="contact-content">
+      <div class="contact-list">
+        {contactInfo.map(contact => (
+          <div class="contact-item">
+            <span class="contact-label">{contact.icon === 'email' ? '📧' : '📍'} {contact.label}:</span>
+            {contact.link ? (
+              <a href={contact.link} class="contact-value">{contact.value}</a>
+            ) : (
+              <span class="contact-value">{contact.value}</span>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <p class="footer-text">
+        <blink>★</blink> Made with ❤️ in {new Date().getFullYear()} <blink>★</blink>
+      </p>
+      <p class="footer-text">
+        Best viewed in <span class="highlight">Netscape Navigator 4.0</span> or higher
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .contact-section {
+    background: transparent !important;
+  }
+
+  .section-heading {
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  .section-heading h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .under-construction {
+    background: repeating-linear-gradient(
+      45deg,
+      #FFFF00,
+      #FFFF00 20px,
+      #000 20px,
+      #000 40px
+    );
+    border: 5px ridge var(--border-color);
+    padding: 1rem;
+    box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.5);
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .under-construction marquee span {
+    display: inline-block;
+    color: white;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.25rem 1rem;
+  }
+
+  .contact-content {
+    display: block;
+  }
+
+  .contact-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .contact-item {
+    background: rgba(0, 0, 0, 0.3);
+    border: 3px solid var(--cyber-blue);
+    padding: 1.5rem;
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
+  }
+
+  .contact-label {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--neon-pink);
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-value {
+    display: block;
+    font-size: 1.125rem;
+    color: var(--text-color);
+    font-weight: bold;
+  }
+
+  .contact-value:hover {
+    color: var(--cyber-blue);
+  }
+
+  .visitor-counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .counter-box {
+    background: linear-gradient(45deg, var(--jazz-teal), var(--jazz-purple), var(--jazz-pink));
+    border: 5px outset var(--border-color);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.5);
+    animation: wiggle 3s ease-in-out infinite;
+  }
+
+  .counter-label {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 0px var(--text-shadow);
+  }
+
+  .counter-number {
+    display: block;
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--neon-green);
+    text-shadow: 3px 3px 0px #000,
+                 5px 5px 0px var(--text-shadow);
+    animation: blink 1.5s infinite;
+  }
+
+  .site-footer {
+    margin: 4rem 0 0;
+    padding: 2rem 0;
+    border-top: 5px ridge var(--border-color);
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(255, 0, 255, 0.1),
+      rgba(255, 0, 255, 0.1) 2px,
+      transparent 2px,
+      transparent 4px
+    );
+  }
+
+  .footer-content {
+    text-align: center;
+  }
+
+  .footer-text {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+
+  .highlight {
+    color: var(--cyber-blue);
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  .footer-badges {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .badge {
+    height: 31px;
+    border: 2px solid var(--border-color);
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+  }
+
+  @media (max-width: 768px) {
+    .contact-content {
+      grid-template-columns: 1fr;
+    }
+
+    .counter-number {
+      font-size: 2rem;
+    }
+  }
+</style>
