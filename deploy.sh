@@ -28,6 +28,10 @@ if [ -d /tmp/dist-git-backup ]; then
   mv /tmp/dist-git-backup dist/.git
 fi
 
+# Add .nojekyll to disable Jekyll processing on GitHub Pages
+echo "📝 Adding .nojekyll file..."
+touch dist/.nojekyll
+
 # Deploy
 echo "📤 Deploying to GitHub Pages..."
 cd dist
