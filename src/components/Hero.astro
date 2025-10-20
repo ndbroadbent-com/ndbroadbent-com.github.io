@@ -17,8 +17,7 @@ const skills = [
   "AWS",
   "Terraform",
   "Docker",
-  "Kubernetes",
-  "Convox"
+  "Kubernetes"
 ];
 
 const experience = [
@@ -74,7 +73,7 @@ const yearsSince2009 = new Date().getFullYear() - 2009;
 
         <p class="hero-intro">
           I've been building <blink>AWESOME</blink> web, mobile, and desktop applications for <span class="highlight">{yearsSince2009} years</span>!
-          I enjoy working with startups and creating my own products. 🚀
+          I like working with startups and building my own products. 🚀
         </p>
 
         <!-- Skills -->
@@ -138,11 +137,15 @@ const yearsSince2009 = new Date().getFullYear() - 2009;
     font-size: 1.5rem;
     font-weight: bold;
     box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
   }
 
   marquee {
     color: var(--text-color);
     text-shadow: 2px 2px 0px var(--text-shadow);
+    display: flex;
+    align-items: center;
   }
 
   .hero-title {
@@ -163,6 +166,11 @@ const yearsSince2009 = new Date().getFullYear() - 2009;
     66% { color: #0000FF; }
     83% { color: #8B00FF; }
     100% { color: #FF0000; }
+  }
+
+  :global([data-theme="dark"]) .hero-title {
+    text-shadow: 3px 3px 0px #FF00FF,
+                 6px 6px 0px rgba(0, 0, 0, 0.5);
   }
 
   .hero-subtitle {
@@ -215,6 +223,12 @@ const yearsSince2009 = new Date().getFullYear() - 2009;
     box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
   }
 
+  :global([data-theme="dark"]) .skills-title {
+    background: transparent;
+    border: 2px dotted var(--neon-green);
+    color: var(--neon-green);
+  }
+
   /* Right Column */
   .hero-sidebar {
     display: flex;
@@ -239,6 +253,10 @@ const yearsSince2009 = new Date().getFullYear() - 2009;
   .info-card:hover {
     transform: scale(1.02);
     box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.5);
+  }
+
+  :global([data-theme="dark"]) .info-card {
+    background: transparent;
   }
 
   .card-title {
@@ -275,6 +293,17 @@ const yearsSince2009 = new Date().getFullYear() - 2009;
     border-style: inset;
     transform: translate(2px, 2px);
     box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+  }
+
+  :global([data-theme="dark"]) .skill-tag {
+    background: transparent;
+    border: 2px dotted var(--neon-green);
+    color: var(--neon-green);
+  }
+
+  :global([data-theme="dark"]) .skill-tag:hover {
+    background: rgba(0, 255, 0, 0.1);
+    border-style: dotted;
   }
 
   .experience-list {

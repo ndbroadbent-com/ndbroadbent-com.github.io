@@ -146,6 +146,17 @@ const icons = {
     box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
   }
 
+  :global([data-theme="dark"]) .social-link {
+    background: transparent;
+    border: 2px dotted var(--neon-green);
+    color: var(--neon-green);
+  }
+
+  :global([data-theme="dark"]) .social-link:hover {
+    background: rgba(0, 255, 0, 0.1);
+    border-style: dotted;
+  }
+
   @media (max-width: 768px) {
     .navbar {
       min-height: 60px;
