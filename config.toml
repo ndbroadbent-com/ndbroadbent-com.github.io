@@ -28,8 +28,8 @@ googleAnalytics = ""
   sharing = true
 
   # Link custom CSS and JS assets (relative to /static/css and /static/js respectively)
-  custom_css = []
-  custom_js  = []
+  custom_css = ["dark-mode.css"]
+  custom_js  = ["theme-toggle.js"]
 
   # Biography section.
   # Section will only be displayed if `content/home/about.md` exists.

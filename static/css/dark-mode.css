@@ -1,0 +1,200 @@
+/*************************************************
+ *  Dark Mode Theme
+ **************************************************/
+
+/* Light mode colors (default) */
+:root {
+  --bg-color: #ffffff;
+  --bg-alt-color: rgb(247, 247, 247);
+  --text-color: #000000;
+  --text-muted: #333333;
+  --text-light: #888;
+  --text-lighter: #aaa;
+  --link-color: #777;
+  --link-hover: #aaa;
+  --border-color: #ddd;
+  --navbar-bg: #fff;
+  --navbar-text: #565a5f;
+  --navbar-brand: #2b2b2b;
+  --code-bg: #f5f5f5;
+  --portrait-bg: url('https://www.gravatar.com/avatar/4931eceec58528529fd004e56af197c4?s=400');
+}
+
+/* Dark mode colors */
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --bg-alt-color: #252525;
+  --text-color: #e0e0e0;
+  --text-muted: #b0b0b0;
+  --text-light: #999;
+  --text-lighter: #666;
+  --link-color: #aaa;
+  --link-hover: #ddd;
+  --border-color: #444;
+  --navbar-bg: #2a2a2a;
+  --navbar-text: #b0b0b0;
+  --navbar-brand: #e0e0e0;
+  --code-bg: #2d2d2d;
+  --portrait-bg: url('https://www.gravatar.com/avatar/4931eceec58528529fd004e56af197c4?s=400');
+}
+
+/* Apply theme colors */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.home-section {
+  background-color: var(--bg-color);
+}
+
+.home-section:nth-of-type(even) {
+  background-color: var(--bg-alt-color);
+}
+
+a,
+a:visited,
+h3.article-title a:hover {
+  color: var(--link-color);
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+.navbar-default {
+  background: var(--navbar-bg);
+}
+
+.navbar-default .navbar-nav li a,
+.navbar-default .navbar-nav li a:visited {
+  color: var(--navbar-text);
+}
+
+.navbar-brand {
+  color: var(--navbar-brand) !important;
+}
+
+#profile .portrait-title h2 {
+  color: var(--text-color);
+}
+
+#profile .portrait-title h3 {
+  color: var(--text-light);
+}
+
+h3.article-title a {
+  color: var(--text-color);
+}
+
+.article-metadata a {
+  color: var(--text-light);
+}
+
+.article-metadata .article-date,
+.article-metadata .article-tags {
+  color: var(--text-light);
+}
+
+ul.ul-exp li {
+  color: var(--text-muted);
+}
+
+ul.ul-exp li .description p.position {
+  color: var(--text-muted);
+}
+
+.section-heading p {
+  color: var(--text-light);
+}
+
+table > thead > tr > th,
+table > tbody > tr > th,
+table > tfoot > tr > th,
+table > thead > tr > td,
+table > tbody > tr > td,
+table > tfoot > tr > td {
+  border-top: 1px solid var(--border-color);
+}
+
+table > thead > tr > th {
+  border-bottom: 2px solid var(--border-color);
+}
+
+table > tbody + tbody {
+  border-top: 2px solid var(--border-color);
+}
+
+[data-theme="dark"] table > tbody > tr:nth-child(odd) > td,
+[data-theme="dark"] table > tbody > tr:nth-child(odd) > th {
+  background-color: var(--bg-alt-color);
+}
+
+[data-theme="dark"] table > tbody > tr:hover > td,
+[data-theme="dark"] table > tbody > tr:hover > th {
+  background-color: #333;
+}
+
+[data-theme="dark"] section#portfolio.home-section li img.portfolio-preview {
+  border-color: var(--border-color);
+}
+
+/* Code blocks */
+[data-theme="dark"] pre,
+[data-theme="dark"] code {
+  background-color: var(--code-bg);
+  color: var(--text-color);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: var(--navbar-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle svg {
+  width: 24px;
+  height: 24px;
+  color: var(--text-color);
+}
+
+.theme-toggle .theme-icon {
+  display: none;
+}
+
+.theme-toggle .theme-icon.active {
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
+  .theme-toggle {
+    bottom: 15px;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+  }
+
+  .theme-toggle svg {
+    width: 20px;
+    height: 20px;
+  }
+}

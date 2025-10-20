@@ -31,5 +31,18 @@
 
     <title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
     <script defer data-domain="ndbroadbent.com" data-api="https://pa-ndbr.nathan-f77.workers.dev/api/event" src="https://pa-ndbr.nathan-f77.workers.dev/js/script.js"></script>
+
+    <!-- Theme initialization (prevent FOUC) -->
+    <script>
+      (function() {
+        const theme = localStorage.getItem('theme-preference') || 'system';
+        const appliedTheme = theme === 'system'
+          ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+          : theme;
+        if (appliedTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
 </head>
 <body id="top">
