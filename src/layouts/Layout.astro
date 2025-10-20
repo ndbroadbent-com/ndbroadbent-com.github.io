@@ -38,8 +38,13 @@ const { title } = Astro.props;
       })();
     </script>
 
-    <!-- Plausible Analytics -->
-    <script defer data-domain="ndbroadbent.com" data-api="https://pa-ndbr.nathan-f77.workers.dev/api/event" src="https://pa-ndbr.nathan-f77.workers.dev/main.js"></script>
+    <script async src="https://pa-ndbr.nathan-f77.workers.dev/main.js"></script>
+    <script>
+      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+      plausible.init({
+        endpoint: "https://pa-ndbr.nathan-f77.workers.dev/api/event"
+      })
+    </script>
   </head>
   <body>
     <slot />
