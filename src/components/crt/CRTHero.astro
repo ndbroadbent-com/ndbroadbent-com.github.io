@@ -137,7 +137,7 @@
       case 'ls':
       case 'll':
       case 'dir':
-        return listDirectory();
+        return listDirectory(args[0]);
 
       case 'pwd':
       case 'cd.':
@@ -205,8 +205,30 @@ LinkedIn: linkedin.com/in/ndbroadbent`;
     }
   }
 
-  function listDirectory(): string {
-    const contents = fileSystem[currentDir] || [];
+  function listDirectory(path?: string): string {
+    let targetDir = currentDir;
+
+    if (path) {
+      // Strip trailing slashes
+      const cleanPath = path.replace(/\/+$/, '');
+
+      // Check if the final segment is a project name
+      const pathParts = cleanPath.split('/');
+      const lastSegment = pathParts[pathParts.length - 1];
+
+      if (projectUrls[lastSegment]) {
+        return projectUrls[lastSegment];
+      }
+
+      // Handle absolute vs relative paths
+      if (cleanPath.startsWith('/')) {
+        targetDir = cleanPath;
+      } else {
+        targetDir = currentDir === '/' ? `/${cleanPath}` : `${currentDir}/${cleanPath}`;
+      }
+    }
+
+    const contents = fileSystem[targetDir] || [];
     if (contents.length === 0) {
       return 'Directory is empty';
     }
@@ -249,12 +271,6 @@ LinkedIn: linkedin.com/in/ndbroadbent`;
       return `Permission denied`;
     }
 
-    // Check if it's a project name (joke - just open the URL)
-    if (projectUrls[path]) {
-      window.open(projectUrls[path], '_blank');
-      return `Opening ${path}...`;
-    }
-
     // Try absolute path
     if (fileSystem[path]) {
       currentDir = path;
@@ -265,6 +281,45 @@ LinkedIn: linkedin.com/in/ndbroadbent`;
     if (fileSystem[newPath]) {
       currentDir = newPath;
       return '';
+    }
+
+    // Check if it's a file (exists in parent directory listing but not as a directory in fileSystem)
+    // Extract parent path and filename
+    let checkPath = path;
+    let parentPath = currentDir;
+
+    if (path.includes('/')) {
+      const parts = path.split('/');
+      const filename = parts[parts.length - 1];
+      const parent = parts.slice(0, -1).join('/');
+
+      if (path.startsWith('/')) {
+        parentPath = '/' + parent;
+      } else {
+        parentPath = currentDir === '/' ? `/${parent}` : `${currentDir}/${parent}`;
+      }
+      checkPath = filename;
+    }
+
+    const items = fileSystem[parentPath] || [];
+    if (items.includes(checkPath)) {
+      return `Not a directory: ${path}`;
+    }
+
+    // Check if it's a project path (joke - just open the URL)
+    // Only if we're in /home/nathan/projects or path starts with projects/
+    const pathParts = path.split('/');
+    const lastSegment = pathParts[pathParts.length - 1];
+
+    if (projectUrls[lastSegment]) {
+      // Check if we're in projects directory or path includes projects
+      const inProjectsDir = currentDir === '/home/nathan/projects';
+      const pathIncludesProjects = pathParts.includes('projects') || path.startsWith('projects/');
+
+      if (inProjectsDir || pathIncludesProjects) {
+        window.open(projectUrls[lastSegment], '_blank');
+        return `Opening ${lastSegment}...`;
+      }
     }
 
     return `Directory not found: ${path}`;
@@ -282,14 +337,24 @@ Full-stack developer with expertise in Ruby/Rails,
 JavaScript/TypeScript, React, Go, and Rust.
 Founder of DocSpring - PDF Generation API.
 Email: hello@ndbroadbent.com`,
-      'notes.txt': 'Remember to push the latest changes to production!',
+      'notes.txt': 'toggle the theme to see some more stuff',
       'ideas.md': `# Project Ideas
 - Build a retro terminal website ✓
-- Create developer productivity tools
-- Contribute more to open source`,
+- Add more features to DocSpring`,
+      'documents/notes.txt': 'toggle the theme to see some more stuff',
+      'documents/ideas.md': `# Project Ideas
+- Build a retro terminal website ✓
+- Add more features to DocSpring`,
     };
 
-    const content = files[filename];
+    // Try exact match first
+    if (files[filename]) {
+      return files[filename];
+    }
+
+    // Try just the filename (basename)
+    const basename = filename.split('/').pop() || '';
+    const content = files[basename];
     if (content) {
       return content;
     }
@@ -435,12 +500,65 @@ Email: hello@ndbroadbent.com`,
             }
           }
 
-          const dirs = fileSystem[targetDir] || [];
-          const matches = dirs.filter(d => d.toLowerCase().startsWith(searchPattern.toLowerCase()));
+          const items = fileSystem[targetDir] || [];
+          const matches = items.filter(d => d.toLowerCase().startsWith(searchPattern.toLowerCase()));
 
           if (matches.length === 1) {
+            // Check if it's a directory
+            const testPath = targetDir === '/' ? `/${matches[0]}` : `${targetDir}/${matches[0]}`;
+            const isDirectory = fileSystem[testPath] !== undefined;
+
             // Add trailing slash for completed directory
-            input.value = `${cmd} ${pathPrefix}${matches[0]}/`;
+            input.value = `${cmd} ${pathPrefix}${matches[0]}${isDirectory ? '/' : ''}`;
+            updateCursorPosition();
+          } else if (matches.length > 1) {
+            const commonPrefix = findCommonPrefix(matches);
+            if (commonPrefix.length > searchPattern.length) {
+              input.value = `${cmd} ${pathPrefix}${commonPrefix}`;
+              updateCursorPosition();
+            } else {
+              // Show available matches with / only for directories
+              const output = matches.map(m => {
+                const testPath = targetDir === '/' ? `/${m}` : `${targetDir}/${m}`;
+                const isDirectory = fileSystem[testPath] !== undefined;
+                return isDirectory ? m + '/' : m;
+              }).join('  ');
+              appendOutput(value, output);
+            }
+          }
+        } else if (cmd === 'cat' || cmd === 'type') {
+          let targetDir = currentDir;
+          let searchPattern = partialPath;
+          let pathPrefix = '';
+
+          // Handle paths with / (e.g., documents/notes.txt)
+          if (partialPath.includes('/')) {
+            const pathParts = partialPath.split('/');
+            const parentPath = pathParts.slice(0, -1).join('/');
+            searchPattern = pathParts[pathParts.length - 1];
+            pathPrefix = parentPath + '/';
+
+            // Build target directory
+            if (partialPath.startsWith('/')) {
+              targetDir = '/' + pathParts.slice(1, -1).join('/');
+              if (targetDir === '/') targetDir = '/';
+              pathPrefix = parentPath === '' ? '/' : parentPath + '/';
+            } else {
+              targetDir = currentDir === '/' ? `/${parentPath}` : `${currentDir}/${parentPath}`;
+            }
+          }
+
+          // Get all items (directories and files) from target directory
+          const allItems = fileSystem[targetDir] || [];
+          const matches = allItems.filter(f => f.toLowerCase().startsWith(searchPattern.toLowerCase()));
+
+          if (matches.length === 1) {
+            // Check if it's a directory or file
+            const fullPath = pathPrefix ? `${pathPrefix}${matches[0]}` : matches[0];
+            const testPath = targetDir === '/' ? `/${matches[0]}` : `${targetDir}/${matches[0]}`;
+            const isDirectory = fileSystem[testPath] !== undefined;
+
+            input.value = `${cmd} ${fullPath}${isDirectory ? '/' : ''}`;
             updateCursorPosition();
           } else if (matches.length > 1) {
             const commonPrefix = findCommonPrefix(matches);
@@ -449,24 +567,8 @@ Email: hello@ndbroadbent.com`,
               updateCursorPosition();
             } else {
               // Show available matches
-              const output = matches.map(m => m + '/').join('  ');
+              const output = matches.join('  ');
               appendOutput(value, output);
-            }
-          }
-        } else if (cmd === 'cat' || cmd === 'type') {
-          const items = fileSystem[currentDir] || [];
-          const files = ['resume.txt', 'notes.txt', 'ideas.md'];
-          const availableFiles = items.filter(item => files.includes(item));
-          const matches = availableFiles.filter(f => f.toLowerCase().startsWith(partialPath.toLowerCase()));
-
-          if (matches.length === 1) {
-            input.value = `${cmd} ${matches[0]}`;
-            updateCursorPosition();
-          } else if (matches.length > 1) {
-            const commonPrefix = findCommonPrefix(matches);
-            if (commonPrefix.length > partialPath.length) {
-              input.value = `${cmd} ${commonPrefix}`;
-              updateCursorPosition();
             }
           }
         }
