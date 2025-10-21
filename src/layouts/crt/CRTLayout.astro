@@ -283,13 +283,14 @@ const { title } = Astro.props;
 
   @media (max-width: 768px) {
     .crt-container {
-      padding: 0.5rem;
+      padding: 0.25rem;
     }
 
     .monitor-frame {
-      width: calc(100vw - 1rem);
-      height: auto;
-      padding: 20px;
+      width: calc(100vw - 0.5rem);
+      height: calc(100vh - 0.5rem);
+      aspect-ratio: unset;
+      padding: 15px;
     }
 
     .screen-content {
@@ -361,15 +362,7 @@ const { title } = Astro.props;
 
     // Handle keyboard navigation
     keydownHandler = (e) => {
-      if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        const currentLine = Math.round(screen.scrollTop / lineHeight);
-        screen.scrollTop = (currentLine + 1) * lineHeight;
-      } else if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        const currentLine = Math.round(screen.scrollTop / lineHeight);
-        screen.scrollTop = (currentLine - 1) * lineHeight;
-      } else if (e.key === 'PageDown') {
+      if (e.key === 'PageDown') {
         e.preventDefault();
         const linesPerPage = Math.floor(screen.clientHeight / lineHeight);
         const currentLine = Math.round(screen.scrollTop / lineHeight);

@@ -3,11 +3,22 @@
 ---
 
 <div class="crt-hero">
-  <pre class="ascii-art">
+  <pre class="ascii-art ascii-art-desktop">
 ▗▖  ▗▖ ▗▄▖▗▄▄▄▖▗▖ ▗▖ ▗▄▖ ▗▖  ▗▖    ▗▄▄▖ ▗▄▄▖  ▗▄▖  ▗▄▖ ▗▄▄▄ ▗▄▄▖ ▗▄▄▄▖▗▖  ▗▖▗▄▄▄▖
 ▐▛▚▖▐▌▐▌ ▐▌ █  ▐▌ ▐▌▐▌ ▐▌▐▛▚▖▐▌    ▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▌  █▐▌ ▐▌▐▌   ▐▛▚▖▐▌  █
 ▐▌ ▝▜▌▐▛▀▜▌ █  ▐▛▀▜▌▐▛▀▜▌▐▌ ▝▜▌    ▐▛▀▚▖▐▛▀▚▖▐▌ ▐▌▐▛▀▜▌▐▌  █▐▛▀▚▖▐▛▀▀▘▐▌ ▝▜▌  █
 ▐▌  ▐▌▐▌ ▐▌ █  ▐▌ ▐▌▐▌ ▐▌▐▌  ▐▌    ▐▙▄▞▘▐▌ ▐▌▝▚▄▞▘▐▌ ▐▌▐▙▄▄▀▐▙▄▞▘▐▙▄▄▖▐▌  ▐▌  █
+  </pre>
+  <pre class="ascii-art ascii-art-mobile">
+▗▖  ▗▖ ▗▄▖▗▄▄▄▖▗▖ ▗▖ ▗▄▖ ▗▖  ▗▖
+▐▛▚▖▐▌▐▌ ▐▌ █  ▐▌ ▐▌▐▌ ▐▌▐▛▚▖▐▌
+▐▌ ▝▜▌▐▛▀▜▌ █  ▐▛▀▜▌▐▛▀▜▌▐▌ ▝▜▌
+▐▌  ▐▌▐▌ ▐▌ █  ▐▌ ▐▌▐▌ ▐▌▐▌  ▐▌
+
+▗▄▄▖ ▗▄▄▖  ▗▄▖  ▗▄▖ ▗▄▄▄ ▗▄▄▖ ▗▄▄▄▖▗▖  ▗▖▗▄▄▄▖
+▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▌  █▐▌ ▐▌▐▌   ▐▛▚▖▐▌  █
+▐▛▀▚▖▐▛▀▚▖▐▌ ▐▌▐▛▀▜▌▐▌  █▐▛▀▚▖▐▛▀▀▘▐▌ ▝▜▌  █
+▐▙▄▞▘▐▌ ▐▌▝▚▄▞▘▐▌ ▐▌▐▙▄▄▀▐▙▄▞▘▐▙▄▄▖▐▌  ▐▌  █
   </pre>
 
   <div class="terminal-output">
@@ -78,9 +89,456 @@
       <p>      > <a href="https://github.com/ndbroadbent" target="_blank">View on GitHub</a></p>
     </div>
 
-    <p class="spacer">> <span class="cursor">█</span></p>
+    <p class="spacer">></p>
+  </div>
+
+  <div class="command-line">
+    <span class="prompt">&gt;&nbsp;</span>
+    <span class="input-wrapper">
+      <input type="text" class="command-input" id="command-input" autocomplete="off" spellcheck="false" />
+      <span class="cursor" id="cursor">█</span>
+    </span>
   </div>
 </div>
+
+<script>
+  // Command history and state
+  let commandHistory: string[] = [];
+  let historyIndex = -1;
+  let currentDir = '/home/nathan';
+
+  // File system simulation
+  const fileSystem: Record<string, string[]> = {
+    '/': ['home', 'bin', 'etc', 'usr'],
+    '/home': ['nathan'],
+    '/home/nathan': ['projects', 'documents', 'resume.txt'],
+    '/home/nathan/projects': ['docspring', 'scm_breeze', 'dotfiles'],
+    '/home/nathan/documents': ['notes.txt', 'ideas.md'],
+    'C:\\': ['Users', 'Windows', 'Program Files'],
+    'C:\\Users': ['Nathan'],
+    'C:\\Users\\Nathan': ['Projects', 'Documents', 'Desktop'],
+    'C:\\Users\\Nathan\\Projects': ['DocSpring', 'SCMBreeze'],
+  };
+
+  // Project URLs mapping
+  const projectUrls: Record<string, string> = {
+    'docspring': 'https://docspring.com',
+    'scm_breeze': 'https://github.com/scmbreeze/scm_breeze',
+    'dotfiles': 'https://github.com/ndbroadbent/dotfiles',
+  };
+
+  // Command execution
+  function executeCommand(cmd: string): string {
+    const parts = cmd.trim().split(/\s+/);
+    const command = parts[0].toLowerCase();
+    const args = parts.slice(1);
+
+    switch (command) {
+      case 'ls':
+      case 'll':
+      case 'dir':
+        return listDirectory();
+
+      case 'pwd':
+      case 'cd.':
+        return currentDir;
+
+      case '..':
+        return changeDirectory('..');
+
+      case 'cd':
+        return changeDirectory(args[0]);
+
+      case 'help':
+      case '?':
+        return `Available commands:
+  ls, ll, dir - List directory contents
+  pwd, cd.    - Print working directory
+  cd [path]   - Change directory
+  cat [file]  - Display file contents
+  clear, cls  - Clear screen
+  help, ?     - Show this help
+  about       - About me
+  contact     - Contact information
+  github      - Open GitHub profile`;
+
+      case 'clear':
+      case 'cls':
+        clearTerminal();
+        return '';
+
+      case 'cat':
+      case 'type':
+        return readFile(args[0]);
+
+      case 'about':
+        return `Nathan Broadbent - Full-stack developer
+Location: Paihia, New Zealand
+Founder of DocSpring (https://docspring.com)
+Blog: https://madebynathan.com`;
+
+      case 'contact':
+        return `Email: hello@ndbroadbent.com
+GitHub: github.com/ndbroadbent
+LinkedIn: linkedin.com/in/ndbroadbent`;
+
+      case 'github':
+      case 'gh':
+        window.open('https://github.com/ndbroadbent', '_blank');
+        return 'Opening GitHub profile...';
+
+      case 'blog':
+        window.open('https://madebynathan.com', '_blank');
+        return 'Opening blog...';
+
+      case 'ps':
+        return `PID  TTY          TIME CMD
+  1  pts/0    00:00:00 init
+  42 pts/0    00:00:00 portfolio.sh
+1337 pts/0    00:00:00 terminal`;
+
+      case '':
+        return '';
+
+      default:
+        return `Command not found: ${command}. Type 'help' for available commands.`;
+    }
+  }
+
+  function listDirectory(): string {
+    const contents = fileSystem[currentDir] || [];
+    if (contents.length === 0) {
+      return 'Directory is empty';
+    }
+    return contents.join('  ');
+  }
+
+  function changeDirectory(path: string): string {
+    if (!path || path === '~') {
+      currentDir = '/home/nathan';
+      return '';
+    }
+
+    // Strip trailing slashes (but preserve single /)
+    const originalPath = path;
+    path = path.replace(/\/+$/, '');
+
+    // Handle root directory
+    if (originalPath === '/' || path === '') {
+      currentDir = '/';
+      return '';
+    }
+
+    if (path === '~') {
+      currentDir = '/home/nathan';
+      return '';
+    }
+
+    if (path === '..') {
+      const parts = currentDir.split('/').filter(p => p);
+      parts.pop();
+      currentDir = parts.length > 0 ? '/' + parts.join('/') : '/';
+      return '';
+    }
+
+    // Restricted directories
+    const restrictedDirs = ['bin', 'etc', 'usr', '/bin', '/etc', '/usr'];
+    const newPath = currentDir === '/' ? `/${path}` : `${currentDir}/${path}`;
+
+    if (restrictedDirs.includes(path) || restrictedDirs.includes(newPath)) {
+      return `Permission denied`;
+    }
+
+    // Check if it's a project name (joke - just open the URL)
+    if (projectUrls[path]) {
+      window.open(projectUrls[path], '_blank');
+      return `Opening ${path}...`;
+    }
+
+    // Try absolute path
+    if (fileSystem[path]) {
+      currentDir = path;
+      return '';
+    }
+
+    // Try relative path
+    if (fileSystem[newPath]) {
+      currentDir = newPath;
+      return '';
+    }
+
+    return `Directory not found: ${path}`;
+  }
+
+  function readFile(filename: string): string {
+    if (!filename) {
+      return 'Usage: cat [filename]';
+    }
+
+    const files: Record<string, string> = {
+      'resume.txt': `NATHAN BROADBENT - SOFTWARE DEVELOPER
+==========================================
+Full-stack developer with expertise in Ruby/Rails,
+JavaScript/TypeScript, React, Go, and Rust.
+Founder of DocSpring - PDF Generation API.
+Email: hello@ndbroadbent.com`,
+      'notes.txt': 'Remember to push the latest changes to production!',
+      'ideas.md': `# Project Ideas
+- Build a retro terminal website ✓
+- Create developer productivity tools
+- Contribute more to open source`,
+    };
+
+    const content = files[filename];
+    if (content) {
+      return content;
+    }
+
+    return `File not found: ${filename}`;
+  }
+
+  function clearTerminal() {
+    const terminalOutput = document.querySelector('.terminal-output');
+    if (terminalOutput) {
+      terminalOutput.innerHTML = '<p>> Terminal ready. Type "help" for commands.</p>';
+    }
+  }
+
+  function appendOutput(command: string, output: string) {
+    const terminalOutput = document.querySelector('.terminal-output');
+    if (!terminalOutput) return;
+
+    const commandLine = document.createElement('p');
+    commandLine.textContent = `> ${command}`;
+    commandLine.style.color = '#99ff99';
+    terminalOutput.appendChild(commandLine);
+
+    if (output) {
+      const outputElem = document.createElement('p');
+      outputElem.textContent = output;
+      outputElem.style.whiteSpace = 'pre-wrap';
+      outputElem.style.marginLeft = '1rem';
+      terminalOutput.appendChild(outputElem);
+    }
+
+    // Scroll to bottom
+    const screen = document.getElementById('crt-screen');
+    if (screen) {
+      screen.scrollTop = screen.scrollHeight;
+    }
+  }
+
+  // Initialize terminal
+  function initTerminal() {
+    const input = document.getElementById('command-input') as HTMLInputElement;
+    if (!input) return;
+
+    // Update cursor position based on text content
+    function updateCursorPosition() {
+      const cursor = document.getElementById('cursor');
+      if (!cursor) return;
+
+      const text = input.value;
+      let textWidth = 0;
+
+      if (text.length > 0) {
+        // Create temporary span to measure text width
+        const measureSpan = document.createElement('span');
+        measureSpan.style.font = getComputedStyle(input).font;
+        measureSpan.style.letterSpacing = getComputedStyle(input).letterSpacing;
+        measureSpan.style.visibility = 'hidden';
+        measureSpan.style.position = 'absolute';
+        measureSpan.textContent = text;
+        document.body.appendChild(measureSpan);
+
+        textWidth = measureSpan.offsetWidth;
+        document.body.removeChild(measureSpan);
+      }
+
+      // Position cursor at end of text (accounting for wrapper padding)
+      cursor.style.left = `calc(0.5ch + ${textWidth}px)`;
+      cursor.style.display = 'inline';
+    }
+
+    // Focus input when clicking anywhere on screen
+    const screen = document.getElementById('crt-screen');
+    if (screen) {
+      screen.addEventListener('click', () => {
+        input.focus();
+      });
+    }
+
+    // Handle keyboard input globally
+    document.addEventListener('keydown', (e) => {
+      // Don't interfere with meta keys
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+
+      // Focus input and scroll to bottom when typing
+      if (e.key.length === 1) {
+        input.focus();
+        if (screen) {
+          screen.scrollTop = screen.scrollHeight;
+        }
+      }
+    });
+
+    // Tab autocompletion
+    function handleTabCompletion() {
+      const value = input.value;
+      const parts = value.split(/\s+/);
+
+      // Command completion (first word)
+      if (parts.length === 1) {
+        const commands = ['ls', 'll', 'dir', 'pwd', 'cd', 'help', 'clear', 'cls', 'cat', 'type', 'about', 'contact', 'github', 'blog', 'ps'];
+        const matches = commands.filter(cmd => cmd.startsWith(parts[0].toLowerCase()));
+
+        if (matches.length === 1) {
+          input.value = matches[0] + ' ';
+          updateCursorPosition();
+        } else if (matches.length > 1) {
+          // Find common prefix
+          const commonPrefix = findCommonPrefix(matches);
+          if (commonPrefix.length > parts[0].length) {
+            input.value = commonPrefix;
+            updateCursorPosition();
+          } else {
+            // Show available matches
+            const output = matches.join('  ');
+            appendOutput(value, output);
+          }
+        }
+      }
+      // Path completion (for cd, ls, ll, cat, type commands)
+      else if (parts.length >= 2) {
+        const cmd = parts[0].toLowerCase();
+        const partialPath = parts.slice(1).join(' ');
+
+        if (cmd === 'cd' || cmd === 'ls' || cmd === 'll' || cmd === 'dir') {
+          let targetDir = currentDir;
+          let searchPattern = partialPath;
+          let pathPrefix = '';
+
+          // Handle paths with / (e.g., projects/docs)
+          if (partialPath.includes('/')) {
+            const pathParts = partialPath.split('/');
+            const parentPath = pathParts.slice(0, -1).join('/');
+            searchPattern = pathParts[pathParts.length - 1];
+            pathPrefix = parentPath + '/';
+
+            // Build target directory
+            if (partialPath.startsWith('/')) {
+              targetDir = '/' + pathParts.slice(1, -1).join('/');
+              if (targetDir === '/') targetDir = '/';
+              pathPrefix = parentPath === '' ? '/' : parentPath + '/';
+            } else {
+              targetDir = currentDir === '/' ? `/${parentPath}` : `${currentDir}/${parentPath}`;
+            }
+          }
+
+          const dirs = fileSystem[targetDir] || [];
+          const matches = dirs.filter(d => d.toLowerCase().startsWith(searchPattern.toLowerCase()));
+
+          if (matches.length === 1) {
+            // Add trailing slash for completed directory
+            input.value = `${cmd} ${pathPrefix}${matches[0]}/`;
+            updateCursorPosition();
+          } else if (matches.length > 1) {
+            const commonPrefix = findCommonPrefix(matches);
+            if (commonPrefix.length > searchPattern.length) {
+              input.value = `${cmd} ${pathPrefix}${commonPrefix}`;
+              updateCursorPosition();
+            } else {
+              // Show available matches
+              const output = matches.map(m => m + '/').join('  ');
+              appendOutput(value, output);
+            }
+          }
+        } else if (cmd === 'cat' || cmd === 'type') {
+          const items = fileSystem[currentDir] || [];
+          const files = ['resume.txt', 'notes.txt', 'ideas.md'];
+          const availableFiles = items.filter(item => files.includes(item));
+          const matches = availableFiles.filter(f => f.toLowerCase().startsWith(partialPath.toLowerCase()));
+
+          if (matches.length === 1) {
+            input.value = `${cmd} ${matches[0]}`;
+            updateCursorPosition();
+          } else if (matches.length > 1) {
+            const commonPrefix = findCommonPrefix(matches);
+            if (commonPrefix.length > partialPath.length) {
+              input.value = `${cmd} ${commonPrefix}`;
+              updateCursorPosition();
+            }
+          }
+        }
+      }
+    }
+
+    function findCommonPrefix(strings: string[]): string {
+      if (strings.length === 0) return '';
+      if (strings.length === 1) return strings[0];
+
+      let prefix = strings[0];
+      for (let i = 1; i < strings.length; i++) {
+        while (strings[i].indexOf(prefix) !== 0) {
+          prefix = prefix.substring(0, prefix.length - 1);
+          if (prefix === '') return '';
+        }
+      }
+      return prefix;
+    }
+
+    // Handle command input
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Tab') {
+        e.preventDefault();
+        handleTabCompletion();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        const command = input.value.trim();
+
+        if (command) {
+          commandHistory.push(command);
+          historyIndex = commandHistory.length;
+
+          const output = executeCommand(command);
+          appendOutput(command, output);
+
+          input.value = '';
+          updateCursorPosition();
+        }
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (historyIndex > 0) {
+          historyIndex--;
+          input.value = commandHistory[historyIndex];
+          updateCursorPosition();
+        }
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (historyIndex < commandHistory.length - 1) {
+          historyIndex++;
+          input.value = commandHistory[historyIndex];
+        } else {
+          historyIndex = commandHistory.length;
+          input.value = '';
+        }
+        updateCursorPosition();
+      }
+    });
+
+    input.addEventListener('input', updateCursorPosition);
+
+    // Initialize cursor position
+    updateCursorPosition();
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTerminal);
+  } else {
+    initTerminal();
+  }
+</script>
 
 <style>
   .crt-hero {
@@ -99,6 +557,10 @@
     margin-bottom: 2rem;
     white-space: pre;
     overflow-x: auto;
+  }
+
+  .ascii-art-mobile {
+    display: none;
   }
 
   .terminal-output {
@@ -176,10 +638,62 @@
     animation: blink-cursor 1s infinite;
   }
 
+  .command-line {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+
+  .command-line .prompt {
+    color: #99ff99;
+    text-shadow:
+      0 0 5px rgba(153, 255, 153, 0.5),
+      0 0 10px rgba(153, 255, 153, 0.3);
+  }
+
+  .input-wrapper {
+    position: relative;
+    flex: 1;
+    display: inline-block;
+    padding-left: 0;
+  }
+
+  .command-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #33ff33;
+    font-family: 'VT323', monospace;
+    font-size: inherit;
+    text-shadow:
+      0 0 5px rgba(51, 255, 51, 0.5),
+      0 0 10px rgba(51, 255, 51, 0.3),
+      0 0 15px rgba(51, 255, 51, 0.2);
+    letter-spacing: 0.05em;
+    caret-color: transparent;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    min-width: 20px;
+  }
+
+  .input-wrapper .cursor {
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+  }
+
   @media (max-width: 768px) {
-    .ascii-art {
-      font-size: 0.7rem;
+    .ascii-art-desktop {
+      display: none;
+    }
+
+    .ascii-art-mobile {
+      display: block;
+      font-size: 0.5rem;
       margin-bottom: 1rem;
+      line-height: 1.1;
     }
 
     .info-line {
