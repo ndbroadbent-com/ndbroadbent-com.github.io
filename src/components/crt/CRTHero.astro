@@ -2,7 +2,7 @@
 // CRT-themed hero component
 ---
 
-<div class="crt-hero">
+<div class="crt-hero" id="crt-hero">
   <pre class="ascii-art ascii-art-desktop">
 ▗▖  ▗▖ ▗▄▖▗▄▄▄▖▗▖ ▗▖ ▗▄▖ ▗▖  ▗▖    ▗▄▄▖ ▗▄▄▖  ▗▄▖  ▗▄▖ ▗▄▄▄ ▗▄▄▖ ▗▄▄▄▖▗▖  ▗▖▗▄▄▄▖
 ▐▛▚▖▐▌▐▌ ▐▌ █  ▐▌ ▐▌▐▌ ▐▌▐▛▚▖▐▌    ▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▌  █▐▌ ▐▌▐▌   ▐▛▚▖▐▌  █
@@ -197,6 +197,9 @@ LinkedIn: linkedin.com/in/ndbroadbent`;
   42 pts/0    00:00:00 portfolio.sh
 1337 pts/0    00:00:00 terminal`;
 
+      case 'echo':
+        return args.join(' ');
+
       case '':
         return '';
 
@@ -283,6 +286,22 @@ LinkedIn: linkedin.com/in/ndbroadbent`;
       return '';
     }
 
+    // Check if it's a project path (joke - just open the URL)
+    // Only if we're in /home/nathan/projects or path starts with projects/
+    const pathParts = path.split('/');
+    const lastSegment = pathParts[pathParts.length - 1];
+
+    if (projectUrls[lastSegment]) {
+      // Check if we're in projects directory or path includes projects
+      const inProjectsDir = currentDir === '/home/nathan/projects';
+      const pathIncludesProjects = pathParts.includes('projects') || path.startsWith('projects/');
+
+      if (inProjectsDir || pathIncludesProjects) {
+        window.open(projectUrls[lastSegment], '_blank');
+        return `Opening ${lastSegment}...`;
+      }
+    }
+
     // Check if it's a file (exists in parent directory listing but not as a directory in fileSystem)
     // Extract parent path and filename
     let checkPath = path;
@@ -304,22 +323,6 @@ LinkedIn: linkedin.com/in/ndbroadbent`;
     const items = fileSystem[parentPath] || [];
     if (items.includes(checkPath)) {
       return `Not a directory: ${path}`;
-    }
-
-    // Check if it's a project path (joke - just open the URL)
-    // Only if we're in /home/nathan/projects or path starts with projects/
-    const pathParts = path.split('/');
-    const lastSegment = pathParts[pathParts.length - 1];
-
-    if (projectUrls[lastSegment]) {
-      // Check if we're in projects directory or path includes projects
-      const inProjectsDir = currentDir === '/home/nathan/projects';
-      const pathIncludesProjects = pathParts.includes('projects') || path.startsWith('projects/');
-
-      if (inProjectsDir || pathIncludesProjects) {
-        window.open(projectUrls[lastSegment], '_blank');
-        return `Opening ${lastSegment}...`;
-      }
     }
 
     return `Directory not found: ${path}`;

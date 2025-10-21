@@ -313,96 +313,30 @@ const { title } = Astro.props;
 </style>
 
 <script>
-  // Line-by-line scrolling - LOCKED to discrete lines only
+  // Smooth scrolling for CRT screen
   const screen = document.getElementById('crt-screen');
   if (screen) {
-    // Get actual line height from rendered content
-    function getActualLineHeight() {
-      const firstParagraph = screen.querySelector('p') || screen.querySelector('div');
-      if (firstParagraph) {
-        return parseFloat(getComputedStyle(firstParagraph).lineHeight);
-      }
-      return parseFloat(getComputedStyle(screen).lineHeight);
-    }
-
-    let lineHeight = getActualLineHeight();
-    let isSnapping = false;
-    let wheelHandler, scrollHandler, keydownHandler, resizeHandler;
-
-    // Snap to nearest line immediately
-    function snapToLine() {
-      if (isSnapping) return; // Prevent recursive snapping
-
-      isSnapping = true;
-      const currentScroll = screen.scrollTop;
-      const snappedScroll = Math.round(currentScroll / lineHeight) * lineHeight;
-
-      if (Math.abs(currentScroll - snappedScroll) > 0.1) {
-        screen.scrollTop = snappedScroll;
-      }
-
-      // Use requestAnimationFrame to release the lock
-      requestAnimationFrame(() => {
-        isSnapping = false;
-      });
-    }
-
-    // Mouse wheel - discrete line-by-line scrolling
-    wheelHandler = (e) => {
-      e.preventDefault();
-      const delta = Math.sign(e.deltaY);
-      const currentLine = Math.round(screen.scrollTop / lineHeight);
-      screen.scrollTop = (currentLine + delta) * lineHeight;
-    };
-
-    // Scrollbar drag - snap IMMEDIATELY to lines (no free dragging)
-    scrollHandler = () => {
-      snapToLine();
-    };
+    let keydownHandler;
 
     // Handle keyboard navigation
     keydownHandler = (e) => {
       if (e.key === 'PageDown') {
         e.preventDefault();
-        const linesPerPage = Math.floor(screen.clientHeight / lineHeight);
-        const currentLine = Math.round(screen.scrollTop / lineHeight);
-        screen.scrollTop = (currentLine + linesPerPage) * lineHeight;
+        screen.scrollTop += screen.clientHeight;
       } else if (e.key === 'PageUp') {
         e.preventDefault();
-        const linesPerPage = Math.floor(screen.clientHeight / lineHeight);
-        const currentLine = Math.round(screen.scrollTop / lineHeight);
-        screen.scrollTop = (currentLine - linesPerPage) * lineHeight;
+        screen.scrollTop -= screen.clientHeight;
       }
     };
 
-    // Recalculate line height on resize
-    resizeHandler = () => {
-      lineHeight = getActualLineHeight();
-      snapToLine();
-    };
-
-    // Enable CRT scroll lock
-    function enableCRTScroll() {
-      screen.addEventListener('wheel', wheelHandler, { passive: false });
-      screen.addEventListener('scroll', scrollHandler);
-      screen.setAttribute('tabindex', '0');
-      screen.addEventListener('keydown', keydownHandler);
-      window.addEventListener('resize', resizeHandler);
-    }
-
-    // Disable CRT scroll lock
-    function disableCRTScroll() {
-      screen.removeEventListener('wheel', wheelHandler);
-      screen.removeEventListener('scroll', scrollHandler);
-      screen.removeAttribute('tabindex');
-      screen.removeEventListener('keydown', keydownHandler);
-      window.removeEventListener('resize', resizeHandler);
-    }
-
-    // Enable scroll lock immediately (we're on CRT page)
-    enableCRTScroll();
+    // Enable keyboard navigation
+    screen.setAttribute('tabindex', '0');
+    screen.addEventListener('keydown', keydownHandler);
 
     // Clean up on page unload
-    window.addEventListener('beforeunload', disableCRTScroll);
+    window.addEventListener('beforeunload', () => {
+      screen.removeEventListener('keydown', keydownHandler);
+      screen.removeAttribute('tabindex');
+    });
   }
 </script>
