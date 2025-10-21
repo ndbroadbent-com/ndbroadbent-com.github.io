@@ -1,0 +1,93 @@
+---
+// CRT-themed toggle to cycle themes (including back to normal site)
+---
+
+<button class="crt-theme-toggle" aria-label="Toggle theme">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="crt-tv-icon">
+    <path d="M7 21h10"/>
+    <rect width="20" height="14" x="2" y="3" rx="2"/>
+  </svg>
+</button>
+
+<script>
+  const THEME_KEY = 'theme-preference';
+  const THEMES = ['crt', 'system', 'dark', 'light'];
+
+  function getStoredTheme() {
+    return localStorage.getItem(THEME_KEY) || 'crt';
+  }
+
+  function cycleTheme() {
+    const currentTheme = getStoredTheme();
+    const currentIndex = THEMES.indexOf(currentTheme);
+    const nextIndex = (currentIndex + 1) % THEMES.length;
+    const nextTheme = THEMES[nextIndex];
+
+    localStorage.setItem(THEME_KEY, nextTheme);
+
+    // If leaving CRT mode, go back to main site
+    if (nextTheme !== 'crt') {
+      window.location.href = '/';
+    }
+  }
+
+  const toggleButton = document.querySelector('.crt-theme-toggle');
+  if (toggleButton) {
+    toggleButton.addEventListener('click', cycleTheme);
+  }
+</script>
+
+<style>
+  .crt-theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #33ff33;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow:
+      0 0 10px rgba(51, 255, 51, 0.5),
+      0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .crt-theme-toggle:hover {
+    transform: scale(1.1);
+    background: rgba(51, 255, 51, 0.1);
+    box-shadow:
+      0 0 20px rgba(51, 255, 51, 0.8),
+      0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .crt-tv-icon {
+    width: 24px;
+    height: 24px;
+    color: #33ff33;
+    filter: drop-shadow(0 0 3px #33ff33) drop-shadow(0 0 6px #33ff33);
+  }
+
+  .crt-theme-toggle:hover .crt-tv-icon {
+    filter: drop-shadow(0 0 5px #33ff33) drop-shadow(0 0 10px #33ff33) drop-shadow(0 0 15px #33ff33);
+  }
+
+  @media screen and (max-width: 768px) {
+    .crt-theme-toggle {
+      bottom: 15px;
+      right: 15px;
+      width: 45px;
+      height: 45px;
+    }
+
+    .crt-tv-icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+</style>

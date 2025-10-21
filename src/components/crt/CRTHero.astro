@@ -1,0 +1,204 @@
+---
+// CRT-themed hero component
+---
+
+<div class="crt-hero">
+  <pre class="ascii-art">
+ _   _       _   _
+| \ | | __ _| |_| |__   __ _ _ __
+|  \| |/ _` | __| '_ \ / _` | '_ \
+| |\  | (_| | |_| | | | (_| | | | |
+|_| \_|\__,_|\__|_| |_|\__,_|_| |_|
+
+ ____                     _ _                _
+| __ ) _ __ ___   __ _  __| | |__   ___ _ __ | |_
+|  _ \| '__/ _ \ / _` |/ _` | '_ \ / _ \ '_ \| __|
+| |_) | | | (_) | (_| | (_| | |_) |  __/ | | | |_
+|____/|_|  \___/ \__,_|\__,_|_.__/ \___|_| |_|\__|
+  </pre>
+
+  <div class="terminal-output">
+    <p class="info-line">
+      <span class="label">NAME:</span>
+      <span class="value">Nathan Broadbent</span>
+    </p>
+
+    <p class="info-line">
+      <span class="label">ROLE:</span>
+      <span class="value">Software Developer</span>
+    </p>
+
+    <p class="info-line">
+      <span class="label">LOCATION:</span>
+      <span class="value">Paihia, New Zealand</span>
+    </p>
+
+    <div class="bio">
+      <p>> PROFILE DESCRIPTION:</p>
+      <p>  Full-stack developer with expertise in building</p>
+      <p>  scalable web applications and developer tools.</p>
+      <p>  Passionate about automation, open source, and</p>
+      <p>  creating efficient workflows.</p>
+    </div>
+
+    <p class="spacer">></p>
+
+    <div class="skills">
+      <p>> TECHNICAL SKILLS:</p>
+      <p>  - Ruby / Rails</p>
+      <p>  - JavaScript / TypeScript</p>
+      <p>  - React / Node.js</p>
+      <p>  - Go</p>
+      <p>  - Rust</p>
+      <p>  - Docker / Kubernetes</p>
+      <p>  - PostgreSQL / Redis</p>
+      <p>  - CI/CD & DevOps</p>
+    </div>
+
+    <p class="spacer">></p>
+
+    <div class="contact">
+      <p>> CONTACT INFORMATION:</p>
+      <p>  EMAIL: <a href="mailto:hello@ndbroadbent.com">hello@ndbroadbent.com</a></p>
+      <p>  GITHUB: <a href="https://github.com/ndbroadbent" target="_blank">github.com/ndbroadbent</a></p>
+      <p>  LINKEDIN: <a href="https://linkedin.com/in/ndbroadbent" target="_blank">linkedin.com/in/ndbroadbent</a></p>
+    </div>
+
+    <p class="spacer">></p>
+
+    <div class="projects">
+      <p>> FEATURED PROJECTS:</p>
+      <p class="spacer"></p>
+      <p>  [1] DocSpring - PDF Generation API</p>
+      <p>      SaaS platform for creating and managing PDF templates</p>
+      <p>      > <a href="https://docspring.com" target="_blank">docspring.com</a></p>
+      <p class="spacer"></p>
+      <p>  [2] SCM Breeze - Git workflow enhancement</p>
+      <p>      Shell scripts for streamlined Git operations</p>
+      <p>      > <a href="https://github.com/scmbreeze/scm_breeze" target="_blank">github.com/scmbreeze/scm_breeze</a></p>
+      <p class="spacer"></p>
+      <p>  [3] Open Source Contributions</p>
+      <p>      Active contributor to various open source projects</p>
+      <p>      > <a href="https://github.com/ndbroadbent" target="_blank">View on GitHub</a></p>
+    </div>
+
+    <p class="spacer">> <span class="cursor"></span></p>
+  </div>
+</div>
+
+<style>
+  .crt-hero {
+    width: 100%;
+  }
+
+  .ascii-art {
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    color: #33ff33;
+    text-shadow:
+      0 0 5px #33ff33,
+      0 0 10px #33ff33;
+    margin-bottom: 2rem;
+    white-space: pre;
+    overflow-x: auto;
+  }
+
+  .terminal-output {
+    font-family: 'VT323', monospace;
+  }
+
+  .prompt {
+    color: #66ff66;
+    text-shadow:
+      0 0 5px #66ff66,
+      0 0 10px #66ff66;
+    margin: 0.5rem 0;
+  }
+
+  .spacer {
+    margin: 0.5rem 0;
+    color: #33ff33;
+  }
+
+  .info-line {
+    margin: 0.5rem 0;
+    display: flex;
+    gap: 1rem;
+  }
+
+  .label {
+    color: #99ff99;
+    min-width: 120px;
+    text-shadow:
+      0 0 5px #99ff99,
+      0 0 10px #99ff99;
+  }
+
+  .value {
+    color: #33ff33;
+  }
+
+  .bio,
+  .skills,
+  .contact,
+  .projects {
+    margin: 1rem 0;
+  }
+
+  .bio p,
+  .skills p,
+  .contact p,
+  .projects p {
+    margin: 0.3rem 0;
+  }
+
+  a {
+    color: #66ff66;
+    text-decoration: underline;
+    text-shadow:
+      0 0 5px #66ff66,
+      0 0 10px #66ff66;
+    transition: all 0.2s ease;
+  }
+
+  a:hover {
+    color: #99ff99;
+    text-shadow:
+      0 0 10px #99ff99,
+      0 0 20px #99ff99,
+      0 0 30px #99ff99;
+  }
+
+  @keyframes blink-cursor {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 10px;
+    height: 1.2em;
+    background: #33ff33;
+    animation: blink-cursor 1s infinite;
+    box-shadow:
+      0 0 5px #33ff33,
+      0 0 10px #33ff33;
+  }
+
+  @media (max-width: 768px) {
+    .ascii-art {
+      font-size: 0.7rem;
+      margin-bottom: 1rem;
+    }
+
+    .info-line {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .label {
+      min-width: auto;
+    }
+  }
+</style>
