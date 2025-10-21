@@ -11,7 +11,7 @@
 
 <script>
   const THEME_KEY = 'theme-preference';
-  const THEMES = ['crt', 'system', 'dark', 'light'];
+  const THEMES = ['crt', 'dark', 'light'];
 
   function getStoredTheme() {
     return localStorage.getItem(THEME_KEY) || 'crt';
@@ -25,9 +25,11 @@
 
     localStorage.setItem(THEME_KEY, nextTheme);
 
-    // If leaving CRT mode, go back to main site
-    if (nextTheme !== 'crt') {
+    // Navigate to appropriate page
+    if (nextTheme === 'crt') {
       window.location.href = '/';
+    } else {
+      window.location.href = '/retro';
     }
   }
 
@@ -70,11 +72,11 @@
     width: 24px;
     height: 24px;
     color: #33ff33;
-    filter: drop-shadow(0 0 3px #33ff33) drop-shadow(0 0 6px #33ff33);
+    filter: drop-shadow(0 0 5px rgba(51, 255, 51, 0.5)) drop-shadow(0 0 10px rgba(51, 255, 51, 0.3));
   }
 
   .crt-theme-toggle:hover .crt-tv-icon {
-    filter: drop-shadow(0 0 5px #33ff33) drop-shadow(0 0 10px #33ff33) drop-shadow(0 0 15px #33ff33);
+    filter: drop-shadow(0 0 8px rgba(51, 255, 51, 0.6)) drop-shadow(0 0 15px rgba(51, 255, 51, 0.4)) drop-shadow(0 0 25px rgba(51, 255, 51, 0.2));
   }
 
   @media screen and (max-width: 768px) {

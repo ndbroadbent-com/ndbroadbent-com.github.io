@@ -3,13 +3,8 @@
 ---
 
 <button class="theme-toggle" aria-label="Toggle theme">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon" data-theme="system">
-    <rect width="20" height="14" x="2" y="3" rx="2"></rect>
-    <line x1="8" x2="16" y1="21" y2="21"></line>
-    <line x1="12" x2="12" y1="17" y2="21"></line>
-  </svg>
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon" data-theme="dark">
-    <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path>
+    <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/>
   </svg>
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon rainbow-icon" data-theme="light">
     <path d="M22 17a10 10 0 0 0-20 0" stroke="#FF0000"/>
@@ -20,35 +15,31 @@
     <rect x="2" y="3" width="20" height="14" rx="2" stroke="#33ff33"></rect>
     <path d="M8 21h8" stroke="#33ff33"></path>
     <path d="M12 17v4" stroke="#33ff33"></path>
-    <line x1="6" y1="7" x2="6" y2="7" stroke="#33ff33" stroke-width="3"></line>
   </svg>
 </button>
 
 <script>
   const THEME_KEY = 'theme-preference';
-  const THEMES = ['system', 'dark', 'light', 'crt'];
+  const THEMES = ['dark', 'light', 'crt'];
 
   function getStoredTheme() {
-    return localStorage.getItem(THEME_KEY) || 'system';
-  }
-
-  function getAppliedTheme(theme: string) {
-    if (theme === 'system') {
+    const stored = localStorage.getItem(THEME_KEY);
+    // If no stored theme, detect from system preference
+    if (!stored) {
       return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
-    return theme;
+    return stored;
   }
 
   function applyTheme(theme: string) {
-    // Handle CRT mode by redirecting to CRT page
+    // Navigate to appropriate page
     if (theme === 'crt') {
-      window.location.href = '/crt';
+      window.location.href = '/';
       return;
     }
 
-    const appliedTheme = getAppliedTheme(theme);
-
-    if (appliedTheme === 'dark') {
+    // Apply dark/light theme (we're on retro page)
+    if (theme === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
     } else {
       document.documentElement.removeAttribute('data-theme');
@@ -85,13 +76,6 @@
     if (toggleButton) {
       toggleButton.addEventListener('click', cycleTheme);
     }
-
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-      const currentTheme = getStoredTheme();
-      if (currentTheme === 'system') {
-        applyTheme('system');
-      }
-    });
   }
 
   if (document.readyState === 'loading') {
